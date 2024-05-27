@@ -57,6 +57,25 @@
         <ul id="resultadosBusqueda"></ul>
     </div>
 
+    <script src="/localizador-sitios/script.js"></script> <div id="paginaPrincipal">
+        <div class="container">
+            <button id="buscarSitio">Buscar Sitio</button>
+            <button id="indicarSitio">Indicar Sitio</button>
+        </div>
+    </div>
+
+    <div id="contenidoIndicar" style="display:none;">
+        <button id="volverIndicar">Volver</button>
+        <button id="indicar">Indicar</button>
+        <ul id="listaUbicaciones"></ul>
+    </div>
+
+    <div id="contenidoBuscar" style="display:none;">
+        <button id="volverBuscar">Volver</button>
+        <input type="text" id="busqueda" placeholder="Buscar ubicación...">
+        <ul id="resultadosBusqueda"></ul>
+    </div>
+
     <script>
         const indicarSitioBtn = document.getElementById('indicarSitio');
         const contenidoIndicar = document.getElementById('contenidoIndicar');
@@ -141,6 +160,6 @@
             });
             lista.appendChild(li);
         }
-    <script src="/localizador-sitios/script.js"></script>
+    </script>
 </body>
 </html>
