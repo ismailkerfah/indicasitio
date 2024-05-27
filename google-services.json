@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "438994651305",
+    "project_id": "prueba7-d76e5",
+    "storage_bucket": "prueba7-d76e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438994651305:android:65d5dd839148124784c1b8",
+        "android_client_info": {
+          "package_name": "Misitio9.Misitio9"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_b2V5Iwxea_MTtMcOxeGSTHi8dGhEzLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
