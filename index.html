@@ -89,6 +89,36 @@
     </div>
 
     <script>
+      const authContainer = document.getElementById('authContainer');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+
+    // Eventos de autenticación
+    loginBtn.addEventListener('click', () => {
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          // Éxito: la autenticación se manejará en auth.onAuthStateChanged
+        })
+        .catch(error => {
+          alert(error.message); // Mostrar mensaje de error al usuario
+        });
+    });
+
+    signupBtn.addEventListener('click', () => {
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          // Éxito: la autenticación se manejará en auth.onAuthStateChanged
+        })
+        .catch(error => {
+          alert(error.message); // Mostrar mensaje de error al usuario
+        }); 
+    });
         const indicarSitioBtn = document.getElementById('indicarSitio');
         const contenidoIndicar = document.getElementById('contenidoIndicar');
         const volverIndicarBtn = document.getElementById('volverIndicar');
@@ -172,6 +202,31 @@
             });
             lista.appendChild(li);
         }
-    </script>
+      auth.onAuthStateChanged(user => {
+      if (user) {
+        authContainer.style.display = 'none';  
+        paginaPrincipal.style.display = 'block'; 
+
+        // Cargar ubicaciones del usuario desde Firestore
+        db.collection('users').doc(user.uid).collection('locations')
+          .orderBy('timestamp', 'desc')
+          .get()
+          .then(snapshot => {
+            snapshot.forEach(doc => {
+              agregarUbicacionALista(doc.data().address, listaUbicaciones);
+              ubicacionesGuardadas.push(doc.data().address);
+            });
+          });
+      } else {
+        authContainer.style.display = 'block'; 
+        paginaPrincipal.style.display = 'none';
+        contenidoIndicar.style.display = 'none';
+        contenidoBuscar.style.display = 'none';
+        listaUbicaciones.innerHTML = '';
+        resultadosBusqueda.innerHTML = '';
+        ubicacionesGuardadas = []; 
+      }
+    }); 
+  </script>
 </body>
 </html>
