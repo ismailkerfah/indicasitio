@@ -1,31 +1,29 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Localizador de Sitios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="paginaPrincipal">
+        <div class="container">
+            <button id="buscarSitio">Buscar Sitio</button>
+            <button id="indicarSitio">Indicar Sitio</button>
+        </div>
+    </div>
 
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+    <div id="contenidoIndicar" style="display:none;">
+        <button id="volverIndicar">Volver</button>
+        <button id="indicar">Indicar</button>
+        <ul id="listaUbicaciones"></ul>
+    </div>
 
-#contenidoIndicar, #contenidoBuscar {
-    text-align: center;
-}
+    <div id="contenidoBuscar" style="display:none;">
+        <button id="volverBuscar">Volver</button>
+        <input type="text" id="busqueda" placeholder="Buscar ubicación...">
+        <ul id="resultadosBusqueda"></ul>
+    </div>
 
-#listaUbicaciones, #resultadosBusqueda {
-    list-style: none;
-    padding: 0;
-}
-
-#busqueda {
-    width: 200px;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-}
+    <script src="script.js"></script>
+</body>
+</html>
