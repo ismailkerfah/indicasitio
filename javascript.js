@@ -48,7 +48,7 @@ function mostrarUbicacion(posicion) {
         .then(response => response.json())
         .then(data => {
             const direccion = data.display_name;
-            agregarUbicacionALista(direccion, listaUbicaciones);
+            listaUbicaciones.innerHTML = `<li>${direccion}</li>`;
             ubicacionesGuardadas.push(direccion);
         });
 }
@@ -68,16 +68,8 @@ busquedaInput.addEventListener('input', () => {
 function mostrarResultadosBusqueda(resultados) {
     resultadosBusqueda.innerHTML = '';
     resultados.forEach(resultado => {
-        agregarUbicacionALista(resultado, resultadosBusqueda);
+        const li = document.createElement('li');
+        li.textContent = resultado;
+        resultadosBusqueda.appendChild(li);
     });
-}
-
-function agregarUbicacionALista(direccion, lista) {
-    const li = document.createElement('li');
-    li.textContent = direccion;
-    li.addEventListener('click', () => {
-        const urlGoogleMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`;
-        window.open(urlGoogleMaps, '_blank');
-    });
-    lista.appendChild(li);
 }
